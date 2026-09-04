@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerrit's Beat Collection</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <h1>GERRIT'S BEAT COLLECTION</h1>
+
+    <div class="wrapper">
+        <div class="beat-card-1">
+            <h2>Distant Thoughts</h2>
+            <div class="media-container">
+              <img src="img/Distant_Thoughts.PNG">
+              <audio src="beats/Distant Thoughts.wav"></audio>
+              <div class="player">
+                <h3 class="play play-btn">▶</h3>
+                <h3 class="pause">||</h3>
+              </div>
+            </div>
+            <a class="card-link" href="https://music.apple.com/de/album/distant-thoughts/6806789429?i=6806789431" target="_blank" rel="noopener noreferrer">Out Now on Apple Music</a>
+        </div>
+
+        <div class="beat-card-2">
+            <h2>Flute Melody</h2>
+            <div class="media-container">
+              <img src="img/Flute Melody.JPEG">
+              <audio src="beats/Flute Melody Final.mp3"></audio>
+              <div class="player">
+                <h3 class="play-2 play-btn">▶</h3>
+                <h3 class="pause-2">||</h3>
+              </div>
+            </div>
+        </div>
+
+        <div class="beat-card-3">
+            <h2>Desert Hope</h2>
+            <div class="media-container">
+              <img src="img/Desert_Hope.JPEG">
+              <audio src="beats/Desert Hope.mp3"></audio>
+              <div class="player">
+                <h3 class="play-3 play-btn">▶</h3>
+                <h3 class="pause-3">||</h3>
+              </div>
+            </div>
+        </div>
+
+        <div class="beat-card-4">
+            <h2>Guitar</h2>
+            <div class="media-container">
+              <img src="img/Experience.JPEG">
+              <audio src="beats/Klobürste.mp3"></audio>
+              <div class="player">
+                <h3 class="play-4 play-btn">▶</h3>
+                <h3 class="pause-4">||</h3>
+              </div>
+            </div>
+        </div>
+
+        <div class="beat-card-5">
+            <h2>Awake</h2>
+            <div class="media-container">
+              <img src="img/Sunset.JPEG">
+              <audio src="beats/Awake.mp3"></audio>
+              <div class="player">
+                <h3 class="play-5 play-btn">▶</h3>
+                <h3 class="pause-5">||</h3>
+              </div>
+            </div>
+        </div>
+
+        <div class="beat-card-6">
+            <h2>Lost Signal</h2>
+            <div class="media-container">
+              <img src="img/Lost Signal.jpg">
+              <audio src="beats/Lost Signal.mp3"></audio>
+              <div class="player">
+                <h3 class="play-6 play-btn">▶</h3>
+                <h3 class="pause-6">||</h3>
+              </div>
+            </div>
+        </div>
+
+        <div class="beat-card-7">
+            <h2>Two Worlds</h2>
+            <div class="media-container">
+              <img src="img/1.JPEG">
+              <audio src="beats/Two Worlds.mp3"></audio>
+              <div class="player">
+                <h3 class="play-7 play-btn">▶</h3>
+                <h3 class="pause-7">||</h3>
+              </div>
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // find nearest ancestor with class starting with 'beat-card-'
+  function findBeatCardAncestor(el) {
+    while (el && el !== document.documentElement) {
+      if (el.classList) {
+        for (const cls of el.classList) {
+          if (cls.startsWith('beat-card-')) return el;
+        }
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  // find the play control inside a card (class starting with 'play')
+  function findPlay(card) {
+    const nodes = Array.from(card.querySelectorAll('*'));
+    return nodes.find(n => n.classList && Array.from(n.classList).some(c => c.startsWith('play')));
+  }
+
+  // Pause & reset any other audio that is currently playing, and remove their play 'playing' class
+  function pauseAndResetOthers(exceptAudio) {
+    document.querySelectorAll('audio').forEach(a => {
+      if (a !== exceptAudio && !a.paused) {
+        a.pause();
+        try { a.currentTime = 0; } catch (e) { console.warn('Could not reset audio currentTime:', e); }
+        const otherCard = findBeatCardAncestor(a);
+        if (otherCard) {
+          const otherPlay = findPlay(otherCard);
+          if (otherPlay) otherPlay.classList.remove('playing');
+        }
+      }
+    });
+  }
+
+  // Initialize all audio players
+  document.querySelectorAll('audio').forEach(audio => {
+    const card = findBeatCardAncestor(audio);
+    if (!card) return;
+    if (card.dataset.playerInit === '1') return;
+    card.dataset.playerInit = '1';
+
+    const play = findPlay(card);
+    if (!play) return;
+
+    // ensure play is visible and clickable
+    play.style.display = '';
+    play.style.cursor = 'pointer';
+    play.classList.remove('playing');
+
+    const playerBox = card.querySelector('.player') || play.parentElement || play;
+
+    // Toggle behaviour: start -> mark playing; pause -> just pause (no reset)
+    playerBox.addEventListener('click', () => {
+      if (audio.paused) {
+        // Starting this audio: pause+reset any other active audios
+        pauseAndResetOthers(audio);
+
+        const p = audio.play();
+        if (p && p instanceof Promise) {
+          p.then(() => {
+            play.classList.add('playing');
+          }).catch(err => {
+            console.warn('Audio play failed:', err);
+            play.classList.add('playing');
+          });
+        } else {
+          play.classList.add('playing');
+        }
+      } else {
+        // Pause this audio, but do NOT reset its time; remove 'playing' class
+        audio.pause();
+        play.classList.remove('playing');
+      }
+    });
+
+    // Keep UI synced with audio events
+    audio.addEventListener('play', () => {
+      pauseAndResetOthers(audio);
+      play.classList.add('playing');
+    });
+    audio.addEventListener('pause', () => {
+      play.classList.remove('playing');
+    });
+    audio.addEventListener('ended', () => {
+      play.classList.remove('playing');
+      try { audio.currentTime = 0; } catch (e) {}
+    });
+  });
+});
+</script>
+</html>

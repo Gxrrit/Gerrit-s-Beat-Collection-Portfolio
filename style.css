@@ -1,0 +1,632 @@
+body {
+    background: #0f0d15;
+    margin: 0;
+}
+
+@font-face {
+    font-family: fat;
+    src: url(fonts/BPdiet.otf);
+}
+
+@font-face {
+    font-family: beat;
+    src: url(fonts/JUST\ Sans\ Outline\ ExBold.otf);
+}
+
+h1 {
+    font-family: fat;
+    font-weight: 1;
+    color: #fff;
+    font-size: 5.2em;
+    text-align: center;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1500px;
+    box-sizing: border-box;
+    height: auto;
+    margin: 100px auto 0;
+    border-radius: 40px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+    padding: 50px;
+    background-color: #181524;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+[class^="beat-card-"] {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    flex: 1 1 400px;
+}
+
+[class^="beat-card-"] img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1;
+}
+
+.beat-card-1 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    flex: 1 1 400px;
+    position: relative;
+}
+
+.beat-card-1 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-1 img {
+    width: 100%;
+    height: 300px;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, .8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.card-link {
+    position: absolute;
+    left: 50%;
+    top: -65px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    padding: 7px 28px;
+    border-radius: 26px;
+    font-family: Roboto, sans-serif;
+    font-weight: bolder;
+    font-size: 1.2em;
+    line-height: 1;
+    margin: 0;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 140px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.card-link:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.7), 0 0 24px rgba(236, 72, 153, 0.7);
+}
+
+.play {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+}
+
+.play:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause {
+    visibility: hidden;
+}
+
+.beat-card-2 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    flex: 1 1 400px;
+}
+
+.beat-card-2 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-2 img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, .8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.play-2 {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+}
+
+.play-2:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.18));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play-2:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause-2 {
+    visibility: hidden;
+}
+
+.beat-card-3 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    flex: 1 1 400px;
+}
+
+.beat-card-3 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-3 img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(187, 211, 255, 0.8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.play-3 {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+}
+
+.play-3:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.18));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play-3:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause-3 {
+    visibility: hidden;
+}
+
+.beat-card-4 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    flex: 1 1 400px;
+}
+
+.beat-card-4 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-4 img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.play-4 {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+}
+
+.play-4:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.18));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play-4:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause-4 {
+    visibility: hidden;
+}
+
+.beat-card-5 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    flex: 1 1 400px;
+}
+
+.beat-card-5 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-5 img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.play-5 {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+}
+
+.play-5:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.18));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play-5:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause-5 {
+    visibility: hidden;
+}
+
+.beat-card-6 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    flex: 1 1 400px;
+}
+
+.beat-card-6 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-6 img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.play-6 {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(187, 211, 255);
+    width: 0;
+    height: 0;
+}
+
+.play-6:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.18));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play-6:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause-6 {
+    visibility: hidden;
+}
+
+.beat-card-7 {
+    width: 100%;
+    height: 450px;
+    background: #221e33;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    flex: 1 1 400px;
+}
+
+.beat-card-7 h2 {
+    font-family: beat;
+    font-size: 3em;
+    position: relative;
+    top: -25px;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.beat-card-7 img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -35px;
+}
+
+.play-7 {
+    font-size: 3em;
+    text-shadow: 0 0 10px;
+    position: relative;
+    left: 180px;
+    bottom: 220px;
+    transition: 0.3s ease;
+    color: rgb(255, 255, 255);
+    width: 0;
+    height: 0;
+}
+
+.play-7:hover {
+    color: #fff;
+    cursor: pointer;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)) drop-shadow(0 0 20px rgba(255,255,255,0.18));
+    transform: scale(1.1);
+    bottom: 225px;
+    left: 178px;
+}
+
+.play-7:active {
+    transform: scale(1);
+    left: 180px;
+    bottom: 287px;
+}
+
+.pause-7 {
+    visibility: hidden;
+}
+
+[class^="beat-card-"] h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+    font-size: 2.5em;
+}
+
+.play.playing,
+[class^="play-"].playing,
+[class*=" play-"].playing {
+  color: #00ff00 !important;
+  filter: drop-shadow(0 0 20px rgba(0,255,0,0.6)) !important;
+  transform: scale(1.05) !important;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3.4em;
+    }
+
+    [class^="beat-card-"] h2 {
+        font-size: 2em;
+    }
+
+    .wrapper {
+        margin-top: 40px;
+        padding: 20px 12px;
+        gap: 20px;
+        border-radius: 24px;
+    }
+
+    [class^="beat-card-"] {
+        width: 100%;
+        max-width: 400px;
+        margin: 0;
+        flex-basis: 100%;
+    }
+
+    [class^="beat-card-"] img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+.media-container {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    margin: -35px auto 0;
+    position: relative;
+}
+
+[class^="beat-card-"] img {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    margin: 0;
+    left: auto;
+    transform: none;
+}
+
+.player {
+    position: absolute;
+    inset: 0;
+}
+
+.play,
+[class^="play-"] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: translate(-50%, -50%);
+}
+
+.play:hover,
+[class^="play-"]:hover {
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play:active,
+[class^="play-"]:active {
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
